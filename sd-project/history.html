@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<style>
+
+body{
+  background-image: url('images/img17.jpg');
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+b{
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+<ul>
+  <li><a href="login-home.php">Home</a></li>
+  <li><a  href="profile.html">My Profile</a></li>
+  <li><a href="fuel_quote.html">New Quote</a></li>
+  <li><a class = "active" href="history.html">Quote History</a></li>
+    <li><a href="logout.php">Logout</a></li>
+</ul>
+
+<center><b>FUEL QUOTE HISTORY </b></center>
+<br>
+<br>
+
+
+<table>
+  <tr>
+    <th>Gallons Requested</th>
+    <th>Delivery Address</th>
+    <th>Delivery Date</th>
+    <th>Suggested Price</th>
+    <th>Total amount due</th>
+  </tr>
+  <tr>
+    <td>234</td>
+    <td>2250 Holly Hall ,Houston , TX -77054</td>
+    <td>06/03/2020</td>
+    <td>1$ per Gallon</td>
+    <td>234$</td>
+  </tr>
+  <tr>
+    <td>300</td>
+    <td>2250 Holly Hall ,Houston , TX -77054</td>
+    <td>15/03/2020</td>
+    <td>3$ per Gallon</td>
+    <td>900$</td>
+  </tr>
+  <tr>
+    <td>200</td>
+    <td>345 El Camino ,Houston , TX -77034</td>
+    <td>06/03/2020</td>
+    <td>1.5$ per Gallon</td>
+    <td>300$</td>
+  </tr>
+  <tr>
+    <td>500</td>
+    <td>225 Cambridge St ,Houston , TX -77074</td>
+    <td>26/03/2020</td>
+    <td>1$ per Gallon</td>
+    <td>500$</td>
+  </tr>
+  <tr>
+    <td>100</td>
+    <td>2250 Holly Hall ,Houston , TX -77054</td>
+    <td>07/03/2020</td>
+    <td>5$ per Gallon</td>
+    <td>500$</td>
+  </tr>
+  <tr>
+    <td>350</td>
+    <td>2250 Holly Hall ,Houston , TX -77054</td>
+    <td>24/03/2020</td>
+    <td>2$ per Gallon</td>
+    <td>700$</td>
+  </tr>
+  <tr>
+    <td>400</td>
+    <td>123 Almeda ,Houston , TX -77044</td>
+    <td>11/03/2020</td>
+    <td>2$ per Gallon</td>
+    <td>800$</td>
+  </tr>
+  <tr>
+    <td>50</td>
+    <td>224 WestHeimer ,Houston , TX -77076</td>
+    <td>08/03/2020</td>
+    <td>10$ per Gallon</td>
+    <td>500$</td>
+  </tr>
+</table>
+
+</body>
+</html>
