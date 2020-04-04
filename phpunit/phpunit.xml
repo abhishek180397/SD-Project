@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="vendor/autoload.php"
+    colors = "true"
+    verbose = "true">
+    <testsuites>
+        <testsuite name ="registration">
+            <directory>tests/registration</directory>
+        </testsuite>
+        <testsuite name ="login">
+            <directory>tests/login</directory>
+        </testsuite>
+        <testsuite name ="profile">
+            <directory>tests/profile</directory>
+        </testsuite>
+        <testsuite name = "fuel-quote">
+            <directory>tests/fuel-quote</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
