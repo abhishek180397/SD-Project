@@ -1,13 +1,4 @@
-<?php
-// Initialize the session
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -86,16 +77,17 @@ div {
 
 <body>
 <ul>
-  <li><a class="active" href="login-home.php">Home</a></li>
-  <li><a href="profile.html">My Profile</a></li>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="profile.php">My Profile</a></li>
   <li><a href="fuel_quote.php">New Quote</a></li>
-  <li><a href="history.html">Quote History</a></li>
+  <li><a href="history.php">Quote History</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 
-<h1> Welcome User !! </h1>
-<p><img src="images/img10.jpg" style="height:700px; width:100%"></p>
+
+<h1> Welcome <?php session_start(); echo $_SESSION["username"];?> !!</h1>
+<p><img src="img10.jpg" style="height:700px; width:100%"></p>
+
 
 </body>
-
 </html>

@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 5px;
 }
 
-x{
+#x{
   color: red;
   font-weight:bold;
 }
@@ -113,32 +113,38 @@ function validateForm() {
 }
 </script>
 
-
-
-
-
-
 </head>
 
+<?php 
+uname = $_SESSION["username"];
+sql = "Select * from Client_Information where uname". $uname;
+if(result = mysqli_query($link, $sql)){
+	$profile = mysqli_fetch_row($result);
+}
+
+?>
 
 <body>
-<ul>
-  <li><a href="login-home.php">Home</a></li>
-  <li><a class = "active" href="profile.html">My Profile</a></li>
-  <li><a href="fuel_quote.html">New Quote</a></li>
-  <li><a href="history.html">Quote History</a></li>
-    <li><a href="logout.php">Logout</a></li>
-</ul>
 
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+<!-- <ul>
+    <li><a href="login-home.php">Home</a></li>
+    <li><a class="active" href="profile.html">My Profile</a></li>
+    <li><a href="fuel_quote.php">New Quote</a></li>
+    <li><a href="history.php">Quote History</a></li>
+    <li><a href="logout.php">Logout</a></li>
+</ul> -->
+
+<!-- <div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;"> -->
 
 <h1>My Profile </h1>
+<h3>Please complete the profile to continue</h3>
 <div>
 
-    <form name="myForm" action="profile.php", onsubmit="return validateForm()", method="post">
-        Name:<x>*</x> <input type="text" name="fname">
-    <label>Address</label>
+      <form name="myForm" action="CompleteProfile.php", onsubmit="return validateForm()", method="post">
+        Name:<x>*</x> <input type="text" name="fname" >
+        
+   	  <label>Address</label>
 	  <label for="address1">Address 1<x>*</x></label>
       <p><input type="text" placeholder="Address Line 1" required name="address1"></p>
 	  <label for="address2">Address 2</label>
@@ -146,7 +152,8 @@ function validateForm() {
       <label for="city">City<x>*</x></label>
 	  <p><input type="text" placeholder="City" required name="city"></p>
       <label for="state">State<x>*</x></label>
-	  <p><select id="state" required name="state"></p>
+    <p><select id="state" required name="state"></p>
+      <option value="None">None</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>
