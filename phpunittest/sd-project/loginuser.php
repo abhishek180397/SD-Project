@@ -1,43 +1,40 @@
 <?php
-#require_once("config.php");
+require_once("config.php");
 
 // Initialize the session
 
 function isValidUsername($uname){
 	global $link;
-	$sql = "Select * from Login where uname = '$uname'";
-	echo " Before query ";
+	$sql = "Select * from login where uname = '$uname'";
 	if($result = mysqli_query($link, $sql)){
-		echo " after query row is ";
 		$nrow = mysqli_num_rows($result);
-		echo $nrow;
 		if(mysqli_num_rows($result) > 0){
 			return true;
 		}
 	}
+	
 	return false;
 }
 
 function validatePassword($uname, $pwd){
 	global $link;
-	$sql = "Select pass from Login where uname = '$uname'";
+	$sql = "Select pass from login where uname = '$uname'";
 	if($result = mysqli_query($link, $sql)){
-		#echo "Query Executed";
+		echo "Query Executed";
 		$pswd = mysqli_fetch_row($result);
-		if($pwd == $pswd[0]){
+		if(password_verify($pwd,$pswd[0])){
 			return true;
 		}
 	}
-	#echo $pswd[0];
-	#echo "Password Mismatch";
+	
 }
 
 function isProfileComplete($uname){
 	global $link;
-	$sql = "Select * from Client where uname = '$uname'";
+	$sql = "Select * from client where uname = '$uname'";
 	if($result = mysqli_query($link, $sql)){
 		$nrow = mysqli_num_rows($result);
-		#echo "<script>alert('$nrow');</script>";
+		echo "<script>alert('$nrow');</script>";
 		if(mysqli_num_rows($result) > 0){
 			return true;
 		}
@@ -70,27 +67,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $password = trim($_POST["password"]);
 	}
-	echo "Before Checking";
-	if(isValidUsername($username)) {
 
+	if(isValidUsername($username)) {
+		echo " username PASS ";
 		if(validatePassword($username, $password)){
-			echo "Password Matching";
+			echo " password PASS ";
 			session_start();	
 			$_SESSION["loggedin"] = true;
 			$_SESSION["username"] = $username;
 			if(isProfileComplete($username)){
-				echo "Profile complete";
+				echo " profile PASS ";
 				// Redirect user to welcome page
-				header("location: profile.php");
+				header("location: login-home.php");
 			}else{			
 				// Redirect user to profile page
-				echo "Profile not complete";
+				//echo "profile incomplete";
 				header("location: profile.html");
 			}
 
 		}	
-	}
-	
+		else{
+			$err = 'perr';
+			header("location: login.php?msg=$err");
+			}
+		}else{
+			$err = 'uerr';
+			header("location: login.php?msg=$err");
+		}
+			
 }
-#header("location: login.html");
+
 ?>
